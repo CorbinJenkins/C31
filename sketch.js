@@ -1,3 +1,32 @@
+//examples of different types of data in javascript
+//strings
+var hi="hello"
+console.log(hi);
+
+//number
+var number=24
+console.log(number);
+
+//boolean data tyoe
+var no=true;
+console.log(no)
+
+//undefined
+var object
+console.log(object)
+
+//null
+object=null
+console.log(object);
+
+
+//array
+var array1=[1,2,3,4,5,6]
+console.log(array1);
+var array2=[hi,number,no,array1]
+console.log(array2)
+var array3=[[1,2],[4,5,6,9],[10,120]]
+console.log(array3[2])
 const Engine = Matter.Engine;
 const World= Matter.World;
 const Bodies = Matter.Bodies;
@@ -7,6 +36,9 @@ var engine, world;
 var box1, pig1,pig3;
 var backgroundImg,platform;
 var bird, slingshot;
+
+var gameState="OnSling"
+
 
 
 function preload() {
@@ -69,16 +101,20 @@ function draw(){
 }
 
 function mouseDragged(){
-    Matter.Body.setPosition(bird.body, {x: mouseX , y: mouseY});
+    if(gameState==="OnSling"){
+        Matter.Body.setPosition(bird.body, {x: mouseX , y: mouseY});
+    }
+
 }
 
 
 function mouseReleased(){
     slingshot.fly();
+    gameState="Launched"
 }
 
-function keyPressed(){
-    if(keyCode === 32){
-        slingshot.attach(bird.body);
-    }
-}
+//function keyPressed(){
+  //  if(keyCode === 32){
+    //    slingshot.attach(bird.body);
+   // }
+//}
